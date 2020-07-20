@@ -22,5 +22,5 @@ class MP3Importer
 end
 
 # Dir["/path/to/search/*"]
-# Dir.glob
-# Dir.entries
+# Dir.glob #=> outputs with filepath
+# Dir.entries #=> outputs without filepath
