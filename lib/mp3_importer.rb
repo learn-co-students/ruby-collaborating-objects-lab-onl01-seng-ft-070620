@@ -19,7 +19,8 @@ class MP3Importer
     def import
         files.each {|filename| Song.new_by_filename(filename)}
     end 
-
 end
 
 # Dir["/path/to/search/*"]
+# Dir.glob
+# Dir.entries

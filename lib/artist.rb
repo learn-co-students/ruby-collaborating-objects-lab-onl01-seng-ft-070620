@@ -3,17 +3,20 @@
 ## of that artist(if artist does exist)
 
 class Artist 
-
     attr_accessor :name 
     @@all = []
 
     def initialize(name)
         @name = name 
-        @@all << self
+        save 
     end 
 
     def self.all
         @@all 
+    end 
+
+    def save
+        @@all << self
     end 
 
     def add_song(song)
@@ -24,14 +27,12 @@ class Artist
         Song.all.select {|song| song.artist == self}
     end 
 
-    def self.find_or_create_by_name(artist_name)
-        artist = self.all.detect {|artist|artist.name == artist_name}
-        if artist
-            artist 
-        else
-            artist = self.new(artist_name) 
-            artist
-        end
+    def self.find(name)
+        self.all.detect {|artist| artist.name == name}
+    end 
+
+    def self.find_or_create_by_name(name)
+        self.find(name) ? self.find(name) : self.new(name)
     end
 
     def print_songs
